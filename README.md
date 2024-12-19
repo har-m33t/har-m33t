@@ -20,4 +20,6 @@ I’m currently pursuing a **B.S. in Computer Science** with Honors at UC Irvine
 I’m always looking for opportunities to work on exciting projects and solve challenging problems. Feel free to explore my repositories or reach out for collaboration ideas. Together, we can build something impactful!  
 📫 **Reach Me:**  
 - LinkedIn: https://www.linkedin.com/in/harmeet-singh-uppal/
-- Email: harmees2@uci.edu 
+- Email: harmees2@uci.edu
+---
+![Harmeet's GitHub stats](https://github-readme-stats.vercel.app/api?username=har-m33t&show_icons=true&theme=radical)
