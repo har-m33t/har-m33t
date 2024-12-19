@@ -6,7 +6,8 @@
 ---
 ### 💻 About Me  
 I’m currently pursuing a **B.S. in Computer Science** with Honors at UC Irvine, diving deep into the realms of **Artificial Intelligence**, **Machine Learning**, and **Software Development**. My journey blends technical expertise with creativity, reflecting my dual passions for **technology** and **art**.  
----
+
+--- 
 ### 🌱 What I’m Learning  
 - Basics of AI/ML algorithms for real-world applications  
 - Core Progamming Concepts
