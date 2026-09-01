@@ -19,13 +19,15 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+
       - name: generate snake svg
         uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
-            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
-            dist/github-contribution-grid-snake.svg
+            dist/github-contribution-grid-snake-dark.svg?color_snake=%23ffb000&color_dots=%23161310,%233a2814,%238f5a10,%23c97f0a,%23ffb000
+            dist/github-contribution-grid-snake.svg?color_snake=%23ff6b35&color_dots=%23f5ede1,%23ffd68a,%23ffb000,%23c97f0a,%238f5a10
 
       - name: push to output branch
         uses: crazy-max/ghaction-github-pages@v4
