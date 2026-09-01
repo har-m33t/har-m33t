@@ -3,7 +3,7 @@
 </div>
 
 <div align="center">
-<a href="https://harmeet-singh.dev"><img src="https://readme-typing-svg.demolab.com/?font=JetBrains+Mono&size=16&duration=3000&pause=1200&color=ffffff&center=true&vCenter=true&width=620&lines=building+toward%3A+agentic+AI+%2B+CUDA+%2B+robotics;full+writeups+%E2%86%92+harmeet-singh.dev" alt="building toward: agentic AI + CUDA + robotics" /></a>
+<a href="https://harmeet-singh.dev"><img src="https://readme-typing-svg.demolab.com/?font=JetBrains+Mono&size=16&duration=3000&pause=1200&color=ffffff&center=true&vCenter=true&width=620&lines=building+toward%3A+computer+vision+%2B+llms+%2B+robotics;full+writeups+%E2%86%92+harmeet-singh.dev" alt="building toward: computer vision + llms + robotics" /></a>
 </div>
 
 <div align="center">
