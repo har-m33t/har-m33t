@@ -326,7 +326,7 @@ ROLES = [
     ("AbbVie", "Clinical Innovation R&D", "Data Scientist Intern, CV + ML",
      "Jun 2026 - Present", "HRNetV2+OCR segmentation on SageMaker, 82% pixel acc, 9x faster inference", True),
     ("SecondWind", "AI Engineering", "AI Software Engineer Intern",
-     "Aug 2026 - Present", "LLM brand-visibility pipeline: buyer-intent prompt sets, structured mention extraction, visibility analytics", True),
+     "Aug 2026 - Present", "AI agents and the infrastructure they run on - orchestration, tooling and evaluation pipelines", True),
     ("Legacy Robotics", "URC Team @ UCI", "SWE, Autonomous Navigation",
      "Apr 2026 - Present", "YOLOv11 to TensorRT, sub-30ms on Jetson; ROS2 stack to sub-5cm localization", True),
     ("Univ. of Arizona", "College of Medicine", "AI + Bioinformatics Research Intern",
