@@ -3,17 +3,17 @@
 </div>
 
 <div align="center">
-<a href="https://harmeet-singh.dev"><img src="https://readme-typing-svg.demolab.com/?font=JetBrains+Mono&size=16&duration=3000&pause=1200&color=FFB000&center=true&vCenter=true&width=620&lines=building+toward%3A+agentic+AI+%2B+CUDA+%2B+robotics;full+writeups+%E2%86%92+harmeet-singh.dev" alt="building toward: agentic AI + CUDA + robotics" /></a>
+<a href="https://harmeet-singh.dev"><img src="https://readme-typing-svg.demolab.com/?font=JetBrains+Mono&size=16&duration=3000&pause=1200&color=b06cff&center=true&vCenter=true&width=620&lines=building+toward%3A+agentic+AI+%2B+CUDA+%2B+robotics;full+writeups+%E2%86%92+harmeet-singh.dev" alt="building toward: agentic AI + CUDA + robotics" /></a>
 </div>
 
 <div align="center">
-<img src="https://img.shields.io/badge/AbbVie-Data_Scientist_Intern-ffb000?style=flat-square&labelColor=0a0908" alt="Data Scientist Intern at AbbVie"/>
-<img src="https://img.shields.io/badge/SecondWind-AI_Software_Engineer_Intern-ffb000?style=flat-square&labelColor=0a0908" alt="AI Software Engineer Intern at SecondWind"/>
+<img src="https://img.shields.io/badge/AbbVie-Data_Scientist_Intern-b06cff?style=flat-square&labelColor=09080f" alt="Data Scientist Intern at AbbVie"/>
+<img src="https://img.shields.io/badge/SecondWind-AI_Software_Engineer_Intern-b06cff?style=flat-square&labelColor=09080f" alt="AI Software Engineer Intern at SecondWind"/>
 <br/>
-<img src="https://img.shields.io/badge/Legacy_Robotics-Autonomous_Navigation-ffb000?style=flat-square&labelColor=0a0908" alt="Autonomous Navigation at Legacy Robotics"/>
+<img src="https://img.shields.io/badge/Legacy_Robotics-Autonomous_Navigation-b06cff?style=flat-square&labelColor=09080f" alt="Autonomous Navigation at Legacy Robotics"/>
 <br/>
-<img src="https://img.shields.io/badge/UArizona_COM-AI_%2B_Bioinformatics_Research-8f5a10?style=flat-square&labelColor=0a0908" alt="AI and Bioinformatics Research at University of Arizona College of Medicine"/>
-<img src="https://img.shields.io/badge/UC_Irvine_'28-B.S._CS_(Honors)-5c554a?style=flat-square&labelColor=0a0908" alt="BS Computer Science Honors, UC Irvine class of 2028"/>
+<img src="https://img.shields.io/badge/UArizona_COM-AI_%2B_Bioinformatics_Research-6b3fa0?style=flat-square&labelColor=09080f" alt="AI and Bioinformatics Research at University of Arizona College of Medicine"/>
+<img src="https://img.shields.io/badge/UC_Irvine_'28-B.S._CS_(Honors)-574f6b?style=flat-square&labelColor=09080f" alt="BS Computer Science Honors, UC Irvine class of 2028"/>
 </div>
 
 <div align="center">

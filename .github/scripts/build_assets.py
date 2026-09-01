@@ -6,7 +6,7 @@ through camo, and camo-served SVGs do not run CSS animations (a card whose
 text starts at opacity:0 renders blank for every visitor). SMIL <animate>
 does run - verified on the live profile.
 
-Sections are rendered as SVG rather than markdown so the amber palette holds:
+Sections are rendered as SVG rather than markdown so the accent palette holds:
 GitHub's own chrome (heading rules, code-block syntax colors, blue links)
 cannot be restyled from a README.
 """
@@ -16,10 +16,10 @@ import os
 import sys
 import urllib.request
 
-AMBER, ORANGE, CREAM = "#ffb000", "#ff6b35", "#f5ede1"
-BG, MUTED, LINE = "#0a0908", "#8a8073", "#1f1b16"
-DIM, PANEL = "#5c554a", "#120f0d"
-RAMP = ["#3a2814", "#5e3c14", "#8f5a10", "#c97f0a", AMBER]
+ACCENT, ACCENT2, TEXT = "#b06cff", "#ff5cc8", "#ece6f5"  # violet / magenta / off-white
+BG, MUTED, LINE = "#09080f", "#857d99", "#1c1826"
+DIM, PANEL = "#574f6b", "#120f1a"
+RAMP = ["#2a1a3d", "#40275c", "#6b3fa0", "#8f57d4", ACCENT]
 MONO = "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
 CW = 0.601  # monospace advance width, in em
 
@@ -57,9 +57,9 @@ def typing_title(cmd, x=26, base=34, size=17, dur=7.0, tid="ttl"):
     cx = f"{x + w:.1f}"
     body = (
         f'<g clip-path="url(#{tid})">'
-        f'<text x="{x}" y="{base}" font-family="{MONO}" font-size="{size}" font-weight="700" fill="{AMBER}">'
+        f'<text x="{x}" y="{base}" font-family="{MONO}" font-size="{size}" font-weight="700" fill="{ACCENT}">'
         f'<tspan fill="{DIM}">$ </tspan>{esc(cmd)}</text></g>'
-        f'<rect x="{cx}" y="{base - size + 3}" width="9" height="{size}" fill="{AMBER}">'
+        f'<rect x="{cx}" y="{base - size + 3}" width="9" height="{size}" fill="{ACCENT}">'
         f'<animate attributeName="x" values="{cx};{cx};{x};{cx};{cx}" keyTimes="{kt}" '
         f'dur="{dur}s" repeatCount="indefinite"/>'
         f'<animate attributeName="opacity" values="1;1;0;0;1" dur="1.06s" repeatCount="indefinite"/></rect>'
@@ -90,9 +90,9 @@ def chip(label, slug, hot, x, size=13):
     ic = ICONS.get(slug) if slug else None
     iw = (ICON_PX + gapi) if ic else 0
     w = iw + text_w(label, size) + pad * 2
-    stroke = AMBER if hot else "#2a231c"
-    fill = CREAM if hot else MUTED
-    mark = AMBER if hot else "#6f6656"
+    stroke = ACCENT if hot else "#2b2440"
+    fill = TEXT if hot else MUTED
+    mark = ACCENT if hot else "#6d6489"
     parts = [f'<rect x="0" y="0" width="{w:.1f}" height="{CHIP_H}" rx="2" '
              f'fill="{PANEL}" stroke="{stroke}" stroke-width="1"/>']
     if ic:
@@ -229,10 +229,10 @@ def build_about(path):
             out.append(f'<text x="52" y="{y}" font-family="{MONO}" font-size="{size}" fill="{DIM}">-</text>')
             out.append(f'<text x="70" y="{y}" font-family="{MONO}" font-size="{size}" fill="{MUTED}">{esc(v)}</text>')
         else:
-            out.append(f'<text x="26" y="{y}" font-family="{MONO}" font-size="{size}" fill="{AMBER}">{esc(k)}:</text>')
+            out.append(f'<text x="26" y="{y}" font-family="{MONO}" font-size="{size}" fill="{ACCENT}">{esc(k)}:</text>')
             if v:
                 out.append(f'<text x="{26 + text_w("off_the_clock:  ", size):.0f}" y="{y}" '
-                           f'font-family="{MONO}" font-size="{size}" fill="{CREAM}">{esc(v)}</text>')
+                           f'font-family="{MONO}" font-size="{size}" fill="{TEXT}">{esc(v)}</text>')
     return write(path, svg(W, H, tdefs, "".join(out) + tbody, "About: location, studies, current roles and focus"))
 
 
@@ -271,21 +271,21 @@ def build_card(path, card):
     name, tag, lines, metrics, stack = card
     W, H = 415, 238
     out = [f'<rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" fill="{PANEL}" stroke="{LINE}"/>',
-           f'<rect x="0" y="0" width="3" height="{H}" fill="{AMBER}"/>']
-    out.append(f'<text x="18" y="30" font-family="{MONO}" font-size="15" font-weight="700" fill="{AMBER}">{esc(name)}</text>')
+           f'<rect x="0" y="0" width="3" height="{H}" fill="{ACCENT}"/>']
+    out.append(f'<text x="18" y="30" font-family="{MONO}" font-size="15" font-weight="700" fill="{ACCENT}">{esc(name)}</text>')
     out.append(f'<text x="18" y="49" font-family="{MONO}" font-size="10.5" fill="{MUTED}">{esc(tag)}</text>')
     for i, ln in enumerate(lines):
-        out.append(f'<text x="18" y="{78 + i * 17}" font-family="{MONO}" font-size="10.5" fill="{CREAM}">{esc(ln)}</text>')
+        out.append(f'<text x="18" y="{78 + i * 17}" font-family="{MONO}" font-size="10.5" fill="{TEXT}">{esc(ln)}</text>')
     x = 18
     for m in metrics:
         w = text_w(m, 10) + 16
-        out.append(f'<rect x="{x}" y="{142}" width="{w:.0f}" height="20" fill="{AMBER}"/>')
+        out.append(f'<rect x="{x}" y="{142}" width="{w:.0f}" height="20" fill="{ACCENT}"/>')
         out.append(f'<text x="{x + 8}" y="{156}" font-family="{MONO}" font-size="10" font-weight="700" fill="{BG}">{esc(m)}</text>')
         x += w + 7
     x = 18
     for t in stack:
         w = text_w(t, 10) + 14
-        out.append(f'<rect x="{x}" y="{176}" width="{w:.0f}" height="19" fill="none" stroke="#2a231c"/>')
+        out.append(f'<rect x="{x}" y="{176}" width="{w:.0f}" height="19" fill="none" stroke="#2b2440"/>')
         out.append(f'<text x="{x + 7}" y="{189}" font-family="{MONO}" font-size="10" fill="{MUTED}">{esc(t)}</text>')
         x += w + 6
     out.append(f'<text x="18" y="{219}" font-family="{MONO}" font-size="10" fill="{DIM}">$ git clone →</text>')
@@ -308,8 +308,8 @@ def build_contact(path, item):
     ic = ICONS.get(slug)
     out = [f'<rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" fill="{PANEL}" stroke="{LINE}"/>']
     if ic:
-        out.append(f'<g transform="translate(22,30) scale({26 / 24:.4f})"><path d="{ic["d"]}" fill="{AMBER}"/></g>')
-    out.append(f'<text x="64" y="42" font-family="{MONO}" font-size="14" font-weight="700" fill="{CREAM}">{esc(label)}</text>')
+        out.append(f'<g transform="translate(22,30) scale({26 / 24:.4f})"><path d="{ic["d"]}" fill="{ACCENT}"/></g>')
+    out.append(f'<text x="64" y="42" font-family="{MONO}" font-size="14" font-weight="700" fill="{TEXT}">{esc(label)}</text>')
     out.append(f'<text x="64" y="62" font-family="{MONO}" font-size="11" fill="{MUTED}">{esc(sub)}</text>')
     return write(path, svg(W, H, "", "".join(out), f"{label} - {sub}"))
 
@@ -341,14 +341,14 @@ def build_experience(path):
     out = []
     for i, (org, unit, title, when, detail, current) in enumerate(ROLES):
         y = top + i * row_h
-        out.append(f'<circle cx="32" cy="{y + 14}" r="5" fill="{AMBER if current else "#5e3c14"}"/>')
+        out.append(f'<circle cx="32" cy="{y + 14}" r="5" fill="{ACCENT if current else "#40275c"}"/>')
         if i < len(ROLES) - 1:
             out.append(f'<line x1="32" y1="{y + 24}" x2="32" y2="{y + row_h - 4}" stroke="{LINE}"/>')
-        out.append(f'<text x="54" y="{y + 19}" font-family="{MONO}" font-size="16" font-weight="700" fill="{CREAM}">{esc(org)}'
+        out.append(f'<text x="54" y="{y + 19}" font-family="{MONO}" font-size="16" font-weight="700" fill="{TEXT}">{esc(org)}'
                    f'<tspan fill="{MUTED}" font-weight="400" font-size="13">  {esc(unit)}</tspan></text>')
         out.append(f'<text x="{W - 30}" y="{y + 19}" text-anchor="end" font-family="{MONO}" font-size="12" '
-                   f'fill="{AMBER if current else MUTED}">{esc(when)}</text>')
-        out.append(f'<text x="54" y="{y + 40}" font-family="{MONO}" font-size="13" fill="{AMBER}" fill-opacity="0.8">{esc(title)}</text>')
+                   f'fill="{ACCENT if current else MUTED}">{esc(when)}</text>')
+        out.append(f'<text x="54" y="{y + 40}" font-family="{MONO}" font-size="13" fill="{ACCENT}" fill-opacity="0.8">{esc(title)}</text>')
         out.append(f'<text x="54" y="{y + 60}" font-family="{MONO}" font-size="12" fill="{MUTED}">{esc(detail)}</text>')
     return write(path, svg(W, H, tdefs, "".join(out) + tbody, "Experience timeline"))
 
@@ -402,12 +402,12 @@ def build_stats(path, data):
             c = d["contributionCount"]
             lvl = 0 if c == 0 else min(4, 1 + int(3 * c / peak))
             grid.append(f'<rect x="{30 + wi * (cell + gap)}" y="{gtop + di * (cell + gap)}" '
-                        f'width="{cell}" height="{cell}" fill="{"#161310" if c == 0 else RAMP[lvl]}"/>')
+                        f'width="{cell}" height="{cell}" fill="{"#141122" if c == 0 else RAMP[lvl]}"/>')
     gx = 30 + len(weeks) * (cell + gap) + 26
     side = []
-    for i, (lab, val, col) in enumerate([("contributions", f'{data["total"]:,}', AMBER),
-                                         ("longest streak", f'{data["streak"]}d', CREAM),
-                                         ("pull requests", str(data["prs"]), CREAM)]):
+    for i, (lab, val, col) in enumerate([("contributions", f'{data["total"]:,}', ACCENT),
+                                         ("longest streak", f'{data["streak"]}d', TEXT),
+                                         ("pull requests", str(data["prs"]), TEXT)]):
         y = gtop + 8 + i * 58
         side.append(f'<text x="{gx}" y="{y + 22}" font-family="{MONO}" font-size="26" font-weight="700" fill="{col}">{esc(val)}</text>')
         side.append(f'<text x="{gx}" y="{y + 40}" font-family="{MONO}" font-size="11" fill="{MUTED}">{esc(lab)}</text>')
