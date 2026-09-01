@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="240" viewBox="0 0 1200 240" role="img" aria-label="harmeet singh - computer vision, LLMs, robotics - UC Irvine 2028">
+  <defs>
+    <linearGradient id="vignette" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#ffb000" stop-opacity="0.10"/>
+      <stop offset="50%"  stop-color="#ffb000" stop-opacity="0.02"/>
+      <stop offset="100%" stop-color="#ff6b35" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="sweep" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#ffb000" stop-opacity="0"/>
+      <stop offset="50%"  stop-color="#ffb000" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#ffb000" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0 L0 0 0 40" fill="none" stroke="#ffb000" stroke-opacity="0.06" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="240" fill="#0a0908"/>
+  <rect width="1200" height="240" fill="url(#grid)"/>
+  <rect width="1200" height="240" fill="url(#vignette)"/>
+
+  <!-- detection reticle: edge ticks -->
+  <g stroke="#ffb000" stroke-opacity="0.30" stroke-width="1">
+    <path d="M0 120 L36 120"/><path d="M1164 120 L1200 120"/>
+    <path d="M600 0 L600 22"/><path d="M600 218 L600 240"/>
+  </g>
+
+  <!-- bounding box corner brackets -->
+  <g stroke="#ffb000" stroke-width="2" fill="none" stroke-linecap="square">
+    <path d="M300 84 L300 56 L328 56"/>
+    <path d="M872 56 L900 56 L900 84"/>
+    <path d="M300 156 L300 184 L328 184"/>
+    <path d="M872 184 L900 184 L900 156"/>
+  </g>
+
+  <!-- classification label chip -->
+  <rect x="300" y="28" width="146" height="20" fill="#ffb000"/>
+  <text x="309" y="42.5" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#0a0908" letter-spacing="0.5">harmeet &#183; 0.99</text>
+
+  <!-- name -->
+  <text x="600" y="128" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="46" font-weight="700" fill="#f5ede1" letter-spacing="2">harmeet singh</text>
+
+  <!-- subtitle -->
+  <text x="600" y="162" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#ffb000" fill-opacity="0.75" letter-spacing="1.5">computer vision &#183; LLMs &#183; robotics &#8212; UC Irvine &#8217;28</text>
+
+  <!-- terminal prompt -->
+  <text x="48" y="217" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#5c554a">harmeet@github:~$ whoami</text>
+  <rect x="238" y="206" width="8" height="14" fill="#ffb000">
+    <animate attributeName="opacity" values="1;1;0;0" dur="1.06s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- scanline sweep -->
+  <rect x="0" y="0" width="1200" height="3" fill="url(#sweep)">
+    <animate attributeName="y" values="-3;240;-3" dur="7s" repeatCount="indefinite"/>
+  </rect>
+</svg>
