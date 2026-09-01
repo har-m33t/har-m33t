@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """Generate the self-hosted SVG widgets used by the profile README.
 
-Everything animated here uses SMIL, never CSS. GitHub proxies README images
-through camo, and camo-served SVGs do not run CSS animations (a card whose
-text starts at opacity:0 renders blank for every visitor). SMIL <animate>
-does run - verified on the live profile.
+Everything animated here uses SMIL, never CSS - but the load-bearing rule is
+that GitHub may not advance either. README images are served into <img>, and
+on the live profile both CSS animations and SMIL sit frozen on their first
+frame. So every animation here is written to be correct when stopped: the
+first value is the finished state, never an empty one. Motion is a bonus for
+renderers that do run it; legibility does not depend on it.
 
 Sections are rendered as SVG rather than markdown so the accent palette holds:
 GitHub's own chrome (heading rules, code-block syntax colors, blue links)
