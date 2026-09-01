@@ -16,10 +16,10 @@ import os
 import sys
 import urllib.request
 
-ACCENT, ACCENT2, TEXT = "#b06cff", "#ff5cc8", "#ece6f5"  # violet / magenta / off-white
-BG, MUTED, LINE = "#09080f", "#857d99", "#1c1826"
-DIM, PANEL = "#574f6b", "#120f1a"
-RAMP = ["#2a1a3d", "#40275c", "#6b3fa0", "#8f57d4", ACCENT]
+ACCENT, ACCENT2, TEXT = "#ffffff", "#c9c9d4", "#f2f2f5"  # violet / magenta / off-white
+BG, MUTED, LINE = "#08080a", "#a8a8b4", "#2a2a32"
+DIM, PANEL = "#7d7d8a", "#101014"
+RAMP = ["#2e2e36", "#4a4a55", "#70707d", "#b0b0bc", ACCENT]
 MONO = "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
 CW = 0.601  # monospace advance width, in em
 
@@ -67,10 +67,26 @@ def typing_title(cmd, x=26, base=34, size=17, dur=7.0, tid="ttl"):
     return defs, body, base + 14
 
 
+# Shared gradients. Emitted into every SVG so any builder can reference them;
+# ids are file-scoped, so there is no collision between assets.
+GRADS = (
+    f'<linearGradient id="bgg" x1="0" y1="0" x2="0" y2="1">'
+    f'<stop offset="0" stop-color="#14141a"/><stop offset="0.45" stop-color="{BG}"/>'
+    f'<stop offset="1" stop-color="#101016"/></linearGradient>'
+    f'<linearGradient id="accg" x1="0" y1="0" x2="0" y2="1">'
+    f'<stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#b8b8c4"/></linearGradient>'
+    f'<linearGradient id="barg" x1="0" y1="0" x2="0" y2="1">'
+    f'<stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#5a5a66"/></linearGradient>'
+    f'<linearGradient id="hotg" x1="0" y1="0" x2="0" y2="1">'
+    f'<stop offset="0" stop-color="#20202a"/><stop offset="1" stop-color="{PANEL}"/></linearGradient>'
+)
+
+
 def svg(w, h, defs, body, label):
     return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" '
             f'viewBox="0 0 {w} {h}" role="img" aria-label="{esc(label)}">'
-            f'<defs>{defs}</defs><rect width="{w}" height="{h}" fill="{BG}"/>{body}</svg>')
+            f'<defs>{GRADS}{defs}</defs>'
+            f'<rect width="{w}" height="{h}" fill="url(#bgg)"/>{body}</svg>')
 
 
 def write(path, content):
@@ -90,11 +106,11 @@ def chip(label, slug, hot, x, size=13):
     ic = ICONS.get(slug) if slug else None
     iw = (ICON_PX + gapi) if ic else 0
     w = iw + text_w(label, size) + pad * 2
-    stroke = ACCENT if hot else "#2b2440"
+    stroke = ACCENT if hot else "#45454f"
     fill = TEXT if hot else MUTED
-    mark = ACCENT if hot else "#6d6489"
+    mark = ACCENT if hot else "#9a9aa6"
     parts = [f'<rect x="0" y="0" width="{w:.1f}" height="{CHIP_H}" rx="2" '
-             f'fill="{PANEL}" stroke="{stroke}" stroke-width="1"/>']
+             f'fill="{"url(#hotg)" if hot else PANEL}" stroke="{stroke}" stroke-width="1"/>']
     if ic:
         sc = ICON_PX / 24.0
         ty = (CHIP_H - ICON_PX) / 2
@@ -186,8 +202,8 @@ def _marquee_block(path, cmd, rows, label, speed0=42):
         clips.append(f'<clipPath id="clip{i}"><rect x="0" y="{y - 2}" width="{W}" height="{CHIP_H + 4}"/></clipPath>')
         out.append(marquee(items, y, rtl=(i % 2 == 1), view_w=W, speed=speed0 + i * 6, rid=i))
     edge = (f'<linearGradient id="edge" x1="0" y1="0" x2="1" y2="0">'
-            f'<stop offset="0" stop-color="{BG}" stop-opacity="1"/><stop offset="0.05" stop-color="{BG}" stop-opacity="0"/>'
-            f'<stop offset="0.95" stop-color="{BG}" stop-opacity="0"/><stop offset="1" stop-color="{BG}" stop-opacity="1"/>'
+            f'<stop offset="0" stop-color="#0f0f14" stop-opacity="1"/><stop offset="0.05" stop-color="{BG}" stop-opacity="0"/>'
+            f'<stop offset="0.95" stop-color="{BG}" stop-opacity="0"/><stop offset="1" stop-color="#0f0f14" stop-opacity="1"/>'
             f'</linearGradient>')
     body = "".join(heads) + "".join(out) + f'<rect y="{top - 6}" width="{W}" height="{H - top + 6}" fill="url(#edge)" pointer-events="none"/>' + tbody
     return write(path, svg(W, H, icon_defs(rows) + edge + "".join(clips) + tdefs, body, label))
@@ -271,7 +287,7 @@ def build_card(path, card):
     name, tag, lines, metrics, stack = card
     W, H = 415, 238
     out = [f'<rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" fill="{PANEL}" stroke="{LINE}"/>',
-           f'<rect x="0" y="0" width="3" height="{H}" fill="{ACCENT}"/>']
+           f'<rect x="0" y="0" width="3" height="{H}" fill="url(#barg)"/>']
     out.append(f'<text x="18" y="30" font-family="{MONO}" font-size="15" font-weight="700" fill="{ACCENT}">{esc(name)}</text>')
     out.append(f'<text x="18" y="49" font-family="{MONO}" font-size="10.5" fill="{MUTED}">{esc(tag)}</text>')
     for i, ln in enumerate(lines):
@@ -279,13 +295,13 @@ def build_card(path, card):
     x = 18
     for m in metrics:
         w = text_w(m, 10) + 16
-        out.append(f'<rect x="{x}" y="{142}" width="{w:.0f}" height="20" fill="{ACCENT}"/>')
+        out.append(f'<rect x="{x}" y="{142}" width="{w:.0f}" height="20" fill="url(#accg)"/>')
         out.append(f'<text x="{x + 8}" y="{156}" font-family="{MONO}" font-size="10" font-weight="700" fill="{BG}">{esc(m)}</text>')
         x += w + 7
     x = 18
     for t in stack:
         w = text_w(t, 10) + 14
-        out.append(f'<rect x="{x}" y="{176}" width="{w:.0f}" height="19" fill="none" stroke="#2b2440"/>')
+        out.append(f'<rect x="{x}" y="{176}" width="{w:.0f}" height="19" fill="none" stroke="#45454f"/>')
         out.append(f'<text x="{x + 7}" y="{189}" font-family="{MONO}" font-size="10" fill="{MUTED}">{esc(t)}</text>')
         x += w + 6
     out.append(f'<text x="18" y="{219}" font-family="{MONO}" font-size="10" fill="{DIM}">$ git clone →</text>')
@@ -341,7 +357,7 @@ def build_experience(path):
     out = []
     for i, (org, unit, title, when, detail, current) in enumerate(ROLES):
         y = top + i * row_h
-        out.append(f'<circle cx="32" cy="{y + 14}" r="5" fill="{ACCENT if current else "#40275c"}"/>')
+        out.append(f'<circle cx="32" cy="{y + 14}" r="5" fill="{ACCENT if current else "#4a4a55"}"/>')
         if i < len(ROLES) - 1:
             out.append(f'<line x1="32" y1="{y + 24}" x2="32" y2="{y + row_h - 4}" stroke="{LINE}"/>')
         out.append(f'<text x="54" y="{y + 19}" font-family="{MONO}" font-size="16" font-weight="700" fill="{TEXT}">{esc(org)}'
@@ -402,7 +418,7 @@ def build_stats(path, data):
             c = d["contributionCount"]
             lvl = 0 if c == 0 else min(4, 1 + int(3 * c / peak))
             grid.append(f'<rect x="{30 + wi * (cell + gap)}" y="{gtop + di * (cell + gap)}" '
-                        f'width="{cell}" height="{cell}" fill="{"#141122" if c == 0 else RAMP[lvl]}"/>')
+                        f'width="{cell}" height="{cell}" fill="{"#16161a" if c == 0 else RAMP[lvl]}"/>')
     gx = 30 + len(weeks) * (cell + gap) + 26
     side = []
     for i, (lab, val, col) in enumerate([("contributions", f'{data["total"]:,}', ACCENT),
