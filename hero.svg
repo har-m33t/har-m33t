@@ -1,0 +1,32 @@
+<svg width="1200" height="240" viewBox="0 0 1200 240" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="fade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.14"/>
+      <stop offset="55%" stop-color="#ffffff" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0 L0 0 0 40" fill="none" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="240" fill="#0d1117"/>
+  <rect width="1200" height="240" fill="url(#grid)"/>
+  <rect width="1200" height="240" fill="url(#fade)"/>
+
+  <g stroke="#ffffff" stroke-width="2" fill="none" stroke-opacity="0.55">
+    <path d="M300 78 L272 78 L272 106"/>
+    <path d="M900 78 L928 78 L928 106"/>
+    <path d="M300 162 L272 162 L272 134"/>
+    <path d="M900 162 L928 162 L928 134"/>
+  </g>
+  <text x="936" y="84" font-family="Consolas, Menlo, monospace" font-size="11" fill="#ffffff" fill-opacity="0.35">conf 0.99</text>
+
+  <text x="600" y="132" font-family="Consolas, Menlo, 'Courier New', monospace" font-size="46" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="2">harmeet singh</text>
+
+  <text x="600" y="186" font-family="Consolas, Menlo, 'Courier New', monospace" font-size="16" fill="#ffffff" fill-opacity="0.5" text-anchor="middle" letter-spacing="1">computer vision &#183; LLMs &#183; robotics &#8212; UC Irvine &#8217;28</text>
+
+  <rect x="0" y="0" width="1200" height="2" fill="#ffffff" fill-opacity="0.25">
+    <animate attributeName="y" values="0;238;0" dur="6s" repeatCount="indefinite"/>
+  </rect>
+</svg>
