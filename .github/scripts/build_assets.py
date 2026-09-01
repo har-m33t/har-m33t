@@ -211,10 +211,10 @@ ABOUT = [
     ("right_now", "Data Scientist Intern @ AbbVie · Autonomous Nav @ Legacy Robotics"),
     ("focus", "computer vision · multimodal LLMs · edge inference · agentic systems"),
     ("off_the_clock", None),
-    (None, "cafe hopping — rating every espresso within 5 miles of campus"),
+    (None, "anime and manga"),
     (None, "sketching, mostly in the margins of lecture notes"),
     (None, "pickup basketball, volleyball, and football on weekends"),
-    ("philosophy", "\"if it's not reproducible, it's a rumor\""),
+    ("philosophy", "\"we dont need the memories\""),
 ]
 
 

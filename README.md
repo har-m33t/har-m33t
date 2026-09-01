@@ -15,12 +15,6 @@
 </div>
 
 <div align="center">
-<sub><b>Computer vision and ML engineer.</b> I train the model, compile it down to something a robot can run at 30ms,<br/>and ship the pipeline around it — segmentation on SageMaker, YOLOv11 on a Jetson, multimodal LLMs across a GPU cluster.</sub>
-</div>
-
-<br/>
-
-<div align="center">
 <img src="./assets/about.svg" width="100%" alt="About: location, studies, current roles and focus"/>
 </div>
 
