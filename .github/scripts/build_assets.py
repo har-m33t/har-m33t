@@ -38,25 +38,25 @@ ROWS = [
     ("LANGUAGES & FRAMEWORKS", [
         ("Python", "python", True), ("C++", "cplusplus", True), ("C", "c", False),
         ("Java", "openjdk", False), ("TypeScript", "typescript", True),
-        ("JavaScript", "javascript", False), ("SQL", "postgresql", False),
+        ("JavaScript", "javascript", False), ("SQL", "postgresql", True),
         ("R", "r", False), ("Bash", "gnubash", False), ("ROS2", "ros", True),
         ("React", "react", False), ("Node.js", "nodedotjs", False), ("Flask", "flask", False),
     ]),
     ("AI / ML", [
-        ("PyTorch", "pytorch", True), ("TensorFlow", "tensorflow", False),
+        ("PyTorch", "pytorch", True), ("TensorFlow", "tensorflow", True),
         ("scikit-learn", "scikitlearn", False), ("OpenCV", "opencv", True),
         ("ONNX", "onnx", True), ("TensorRT", "nvidia", True), ("CUDA", "nvidia", True),
         ("Transformers", "huggingface", True), ("Keras", "keras", False),
-        ("NumPy", "numpy", False), ("Pandas", "pandas", False), ("Plotly", "plotly", False),
+        ("NumPy", "numpy", True), ("Pandas", "pandas", True), ("Plotly", "plotly", False),
     ]),
     ("CLOUD & DEPLOYMENT", [
-        ("AWS", "amazonwebservices", True), ("SageMaker", "amazonwebservices", True),
-        ("Bedrock", "amazonwebservices", True), ("Lambda", "awslambda", False),
+        ("AWS", "amazonwebservices", True), ("SageMaker", "amazonwebservices", False),
+        ("Bedrock", "amazonwebservices", False), ("Lambda", "awslambda", False),
         ("S3", "amazons3", False), ("DynamoDB", "amazondynamodb", False),
         ("API Gateway", "amazonapigateway", False), ("Azure", None, False),
         ("Docker", "docker", True), ("Kubernetes", "kubernetes", False),
         ("CI/CD", "githubactions", False), ("Jetson", "nvidia", True),
-        ("Linux", "linux", False), ("Git", "git", False),
+        ("Linux", "linux", True), ("Git", "git", True),
     ]),
 ]
 
