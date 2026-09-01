@@ -336,6 +336,56 @@ def build_title(path, cmd, label):
     return write(path, svg(W, top + 4, tdefs, tbody, label))
 
 
+# ---------------------------------------------------------------- tagline
+
+TAGLINE = ["building toward: computer vision + llms + robotics",
+           "full writeups \u2192 harmeet-singh.dev"]
+
+
+def build_tagline(path):
+    """The two-line typed tagline under the hero.
+
+    This replaced readme-typing-svg, which renders blank on GitHub: its
+    <path> carries no base `d` and the animation's first value is a
+    zero-length path, so a renderer that never advances SMIL has nothing to
+    lay the text on. Same freeze-on-values[0] rule as typing_title - line one
+    therefore starts complete, and only line two starts hidden.
+    """
+    W, H, size, dur = 1200, 72, 22.7, 9.0
+    base = H / 2 + size / 3
+    a, b = TAGLINE
+    wa, wb = text_w(a, size), text_w(b, size)
+    sa, sb = (W - wa) / 2, (W - wb) / 2
+    ea, eb = sa + wa, sb + wb
+
+    defs = (
+        f'<clipPath id="c1"><rect x="{sa:.1f}" y="{base - size:.1f}" width="{wa:.1f}" height="{size * 1.6:.0f}">'
+        f'<animate attributeName="width" values="{wa:.1f};{wa:.1f};0;0;{wa:.1f}" '
+        f'keyTimes="0;0.40;0.46;0.99;1" dur="{dur}s" repeatCount="indefinite"/></rect></clipPath>'
+        f'<clipPath id="c2"><rect x="{sb:.1f}" y="{base - size:.1f}" width="0" height="{size * 1.6:.0f}">'
+        f'<animate attributeName="width" values="0;0;{wb:.1f};{wb:.1f};0;0" '
+        f'keyTimes="0;0.47;0.53;0.93;0.985;1" dur="{dur}s" repeatCount="indefinite"/></rect></clipPath>'
+    )
+
+    def line(txt, x, cid, vals, kt):
+        return (f'<g clip-path="url(#{cid})" opacity="{vals[0]}">'
+                f'<animate attributeName="opacity" values="{";".join(vals)}" keyTimes="{kt}" '
+                f'dur="{dur}s" repeatCount="indefinite"/>'
+                f'<text x="{x:.1f}" y="{base:.1f}" font-family="{MONO}" font-size="{size}" '
+                f'fill="{ACCENT}">{esc(txt)}</text></g>')
+
+    body = (
+        line(a, sa, "c1", ["1", "1", "0", "0", "1", "1"], "0;0.46;0.465;0.985;0.99;1")
+        + line(b, sb, "c2", ["0", "0", "1", "1", "0", "0"], "0;0.465;0.47;0.985;0.99;1")
+        + f'<rect x="{ea:.1f}" y="{base - size + 4:.1f}" width="12" height="{size:.0f}" fill="{ACCENT}">'
+        f'<animate attributeName="x" '
+        f'values="{ea:.1f};{ea:.1f};{sa:.1f};{sb:.1f};{eb:.1f};{eb:.1f};{sb:.1f};{sa:.1f};{ea:.1f}" '
+        f'keyTimes="0;0.40;0.46;0.47;0.53;0.93;0.985;0.99;1" dur="{dur}s" repeatCount="indefinite"/>'
+        f'<animate attributeName="opacity" values="1;1;0;0;1" dur="1.06s" repeatCount="indefinite"/></rect>'
+    )
+    return write(path, svg(W, H, defs, body, a))
+
+
 # ----------------------------------------------------------- experience.svg
 
 ROLES = [
@@ -451,6 +501,7 @@ if __name__ == "__main__":
     out = sys.argv[1] if len(sys.argv) > 1 else "assets"
     os.makedirs(out, exist_ok=True)
     p = lambda n: os.path.join(out, n)
+    print("wrote", build_tagline(p("tagline.svg")))
     print("wrote", build_stack(p("stack.svg")))
     print("wrote", build_learning(p("learning.svg")))
     print("wrote", build_about(p("about.svg")))
