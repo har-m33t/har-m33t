@@ -211,7 +211,7 @@ ABOUT = [
     ("right_now", "Data Scientist Intern @ AbbVie · AI SWE Intern @ SecondWind · Autonomous Nav @ Legacy Robotics"),
     ("focus", "computer vision · multimodal LLMs · edge inference · agentic systems"),
     ("off_the_clock", None),
-    (None, "anime and manga"),
+    (None, "anime and manga — Vagabond, Fullmetal Alchemist, JoJo's Bizarre Adventure, Jujutsu Kaisen, Dragon Ball"),
     (None, "sketching, mostly in the margins of lecture notes"),
     (None, "pickup basketball, volleyball, and football on weekends"),
     ("philosophy", "\"we dont need the memories\""),
