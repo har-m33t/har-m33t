@@ -8,6 +8,8 @@
 
 <div align="center">
 <img src="https://img.shields.io/badge/AbbVie-Data_Scientist_Intern-ffb000?style=flat-square&labelColor=0a0908" alt="Data Scientist Intern at AbbVie"/>
+<img src="https://img.shields.io/badge/SecondWind-AI_Software_Engineer_Intern-ffb000?style=flat-square&labelColor=0a0908" alt="AI Software Engineer Intern at SecondWind"/>
+<br/>
 <img src="https://img.shields.io/badge/Legacy_Robotics-Autonomous_Navigation-ffb000?style=flat-square&labelColor=0a0908" alt="Autonomous Navigation at Legacy Robotics"/>
 <br/>
 <img src="https://img.shields.io/badge/UArizona_COM-AI_%2B_Bioinformatics_Research-8f5a10?style=flat-square&labelColor=0a0908" alt="AI and Bioinformatics Research at University of Arizona College of Medicine"/>

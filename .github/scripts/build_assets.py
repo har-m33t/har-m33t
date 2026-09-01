@@ -208,7 +208,7 @@ def build_learning(path):
 ABOUT = [
     ("based_in", "Irvine, CA"),
     ("studying", "B.S. Computer Science (Honors) @ UC Irvine — class of 2028 · GPA 3.78"),
-    ("right_now", "Data Scientist Intern @ AbbVie · Autonomous Nav @ Legacy Robotics"),
+    ("right_now", "Data Scientist Intern @ AbbVie · AI SWE Intern @ SecondWind · Autonomous Nav @ Legacy Robotics"),
     ("focus", "computer vision · multimodal LLMs · edge inference · agentic systems"),
     ("off_the_clock", None),
     (None, "anime and manga"),
@@ -325,6 +325,8 @@ def build_title(path, cmd, label):
 ROLES = [
     ("AbbVie", "Clinical Innovation R&D", "Data Scientist Intern, CV + ML",
      "Jun 2026 - Present", "HRNetV2+OCR segmentation on SageMaker, 82% pixel acc, 9x faster inference", True),
+    ("SecondWind", "AI Engineering", "AI Software Engineer Intern",
+     "Aug 2026 - Present", "LLM brand-visibility pipeline: buyer-intent prompt sets, structured mention extraction, visibility analytics", True),
     ("Legacy Robotics", "URC Team @ UCI", "SWE, Autonomous Navigation",
      "Apr 2026 - Present", "YOLOv11 to TensorRT, sub-30ms on Jetson; ROS2 stack to sub-5cm localization", True),
     ("Univ. of Arizona", "College of Medicine", "AI + Bioinformatics Research Intern",
